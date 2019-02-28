@@ -95,18 +95,20 @@
             // 
             this.numTo.Location = new System.Drawing.Point(45, 45);
             this.numTo.Maximum = new decimal(new int[] {
-            9999,
+            1000,
             0,
             0,
             0});
             this.numTo.Name = "numTo";
             this.numTo.Size = new System.Drawing.Size(66, 20);
             this.numTo.TabIndex = 6;
+            this.numTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numTo.Value = new decimal(new int[] {
             20,
             0,
             0,
             0});
+            this.numTo.Leave += new System.EventHandler(this.numTo_Leave);
             // 
             // label3
             // 
@@ -120,9 +122,16 @@
             // numFrom
             // 
             this.numFrom.Location = new System.Drawing.Point(45, 19);
+            this.numFrom.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numFrom.Name = "numFrom";
             this.numFrom.Size = new System.Drawing.Size(66, 20);
             this.numFrom.TabIndex = 4;
+            this.numFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numFrom.Leave += new System.EventHandler(this.numFrom_Leave);
             // 
             // label2
             // 

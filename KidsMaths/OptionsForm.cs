@@ -92,5 +92,25 @@ namespace KidsMaths
         {
 
         }
+
+        private void numTo_Leave(object sender, EventArgs e)
+        {
+            if (numTo.Value < numFrom.Value)
+            {
+                MessageBox.Show("From cannot be less than To.", _mainForm.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                numTo.Value = numFrom.Value;
+                numTo.Focus();
+            }
+        }
+
+        private void numFrom_Leave(object sender, EventArgs e)
+        {
+            if (numTo.Value < numFrom.Value)
+            {
+                MessageBox.Show("From cannot be less than To.", _mainForm.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                numFrom.Value = numTo.Value;
+                numFrom.Focus();
+            }
+        }
     }
 }

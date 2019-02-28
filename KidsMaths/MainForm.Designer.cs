@@ -57,7 +57,7 @@
             // 
             this.lblOperator.AutoSize = true;
             this.lblOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 76F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOperator.Location = new System.Drawing.Point(199, 43);
+            this.lblOperator.Location = new System.Drawing.Point(217, 43);
             this.lblOperator.Name = "lblOperator";
             this.lblOperator.Size = new System.Drawing.Size(109, 115);
             this.lblOperator.TabIndex = 1;
@@ -68,7 +68,7 @@
             // 
             this.btnNext.Enabled = false;
             this.btnNext.Font = new System.Drawing.Font("Comic Sans MS", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(161, 184);
+            this.btnNext.Location = new System.Drawing.Point(183, 184);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(186, 81);
             this.btnNext.TabIndex = 3;
@@ -79,7 +79,7 @@
             // btnAnswer
             // 
             this.btnAnswer.Font = new System.Drawing.Font("Comic Sans MS", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnswer.Location = new System.Drawing.Point(385, 184);
+            this.btnAnswer.Location = new System.Drawing.Point(403, 184);
             this.btnAnswer.Name = "btnAnswer";
             this.btnAnswer.Size = new System.Drawing.Size(186, 81);
             this.btnAnswer.TabIndex = 4;
@@ -92,7 +92,7 @@
             this.txtFirstNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 76F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstNumber.Location = new System.Drawing.Point(40, 43);
             this.txtFirstNumber.Name = "txtFirstNumber";
-            this.txtFirstNumber.Size = new System.Drawing.Size(170, 122);
+            this.txtFirstNumber.Size = new System.Drawing.Size(182, 122);
             this.txtFirstNumber.TabIndex = 6;
             this.txtFirstNumber.TabStop = false;
             this.txtFirstNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -100,9 +100,9 @@
             // txtSecondNumber
             // 
             this.txtSecondNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 76F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSecondNumber.Location = new System.Drawing.Point(280, 43);
+            this.txtSecondNumber.Location = new System.Drawing.Point(314, 43);
             this.txtSecondNumber.Name = "txtSecondNumber";
-            this.txtSecondNumber.Size = new System.Drawing.Size(170, 122);
+            this.txtSecondNumber.Size = new System.Drawing.Size(182, 122);
             this.txtSecondNumber.TabIndex = 7;
             this.txtSecondNumber.TabStop = false;
             this.txtSecondNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -110,9 +110,9 @@
             // txtAnswer
             // 
             this.txtAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 76F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnswer.Location = new System.Drawing.Point(522, 43);
+            this.txtAnswer.Location = new System.Drawing.Point(600, 43);
             this.txtAnswer.Name = "txtAnswer";
-            this.txtAnswer.Size = new System.Drawing.Size(170, 122);
+            this.txtAnswer.Size = new System.Drawing.Size(182, 122);
             this.txtAnswer.TabIndex = 8;
             this.txtAnswer.TabStop = false;
             this.txtAnswer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -121,7 +121,7 @@
             // txtPlus
             // 
             this.txtPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlus.Location = new System.Drawing.Point(506, 291);
+            this.txtPlus.Location = new System.Drawing.Point(610, 291);
             this.txtPlus.Name = "txtPlus";
             this.txtPlus.Size = new System.Drawing.Size(83, 83);
             this.txtPlus.TabIndex = 9;
@@ -133,7 +133,7 @@
             // txtMinus
             // 
             this.txtMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMinus.Location = new System.Drawing.Point(609, 291);
+            this.txtMinus.Location = new System.Drawing.Point(699, 291);
             this.txtMinus.Name = "txtMinus";
             this.txtMinus.Size = new System.Drawing.Size(83, 83);
             this.txtMinus.TabIndex = 10;
@@ -149,9 +149,9 @@
             this.sslNumberOfQuestionsAnswered,
             this.toolStripStatusLabel2,
             this.sslNumWrongAnswers});
-            this.sstStatusStrip.Location = new System.Drawing.Point(0, 395);
+            this.sstStatusStrip.Location = new System.Drawing.Point(0, 383);
             this.sstStatusStrip.Name = "sstStatusStrip";
-            this.sstStatusStrip.Size = new System.Drawing.Size(737, 22);
+            this.sstStatusStrip.Size = new System.Drawing.Size(797, 22);
             this.sstStatusStrip.TabIndex = 11;
             this.sstStatusStrip.Text = "statusStrip1";
             // 
@@ -183,7 +183,7 @@
             // 
             // btnRight
             // 
-            this.btnRight.Location = new System.Drawing.Point(40, 205);
+            this.btnRight.Location = new System.Drawing.Point(56, 271);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(75, 81);
             this.btnRight.TabIndex = 12;
@@ -193,7 +193,7 @@
             // 
             // btnWrong
             // 
-            this.btnWrong.Location = new System.Drawing.Point(121, 205);
+            this.btnWrong.Location = new System.Drawing.Point(137, 271);
             this.btnWrong.Name = "btnWrong";
             this.btnWrong.Size = new System.Drawing.Size(75, 81);
             this.btnWrong.TabIndex = 13;
@@ -206,7 +206,7 @@
             // 
             this.lblEquals.AutoSize = true;
             this.lblEquals.Font = new System.Drawing.Font("Microsoft Sans Serif", 76F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEquals.Location = new System.Drawing.Point(437, 43);
+            this.lblEquals.Location = new System.Drawing.Point(497, 46);
             this.lblEquals.Name = "lblEquals";
             this.lblEquals.Size = new System.Drawing.Size(109, 115);
             this.lblEquals.TabIndex = 14;
@@ -231,7 +231,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(737, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(797, 24);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -252,7 +252,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 417);
+            this.ClientSize = new System.Drawing.Size(797, 405);
             this.Controls.Add(this.btnWrong);
             this.Controls.Add(this.btnRight);
             this.Controls.Add(this.sstStatusStrip);
@@ -265,8 +265,8 @@
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.txtAnswer);
             this.Controls.Add(this.lblOperator);
-            this.Controls.Add(this.txtHalfOf);
             this.Controls.Add(this.lblEquals);
+            this.Controls.Add(this.txtHalfOf);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
