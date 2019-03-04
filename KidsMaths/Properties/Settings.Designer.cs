@@ -82,5 +82,197 @@ namespace KidsMaths.Properties {
                 this["rdoHalf"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool rdoTimesTables {
+            get {
+                return ((bool)(this["rdoTimesTables"]));
+            }
+            set {
+                this["rdoTimesTables"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int cboTimesTables {
+            get {
+                return ((int)(this["cboTimesTables"]));
+            }
+            set {
+                this["cboTimesTables"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool TimesTableInOrder {
+            get {
+                return ((bool)(this["TimesTableInOrder"]));
+            }
+            set {
+                this["TimesTableInOrder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TimesTableRandom {
+            get {
+                return ((bool)(this["TimesTableRandom"]));
+            }
+            set {
+                this["TimesTableRandom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AdditionAndSubtraction {
+            get {
+                return ((bool)(this["AdditionAndSubtraction"]));
+            }
+            set {
+                this["AdditionAndSubtraction"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Tens {
+            get {
+                return ((bool)(this["Tens"]));
+            }
+            set {
+                this["Tens"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int TensValue {
+            get {
+                return ((int)(this["TensValue"]));
+            }
+            set {
+                this["TensValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Bonds {
+            get {
+                return ((bool)(this["Bonds"]));
+            }
+            set {
+                this["Bonds"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int BondsValue {
+            get {
+                return ((int)(this["BondsValue"]));
+            }
+            set {
+                this["BondsValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Doubles {
+            get {
+                return ((bool)(this["Doubles"]));
+            }
+            set {
+                this["Doubles"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int DoublesRangeFrom {
+            get {
+                return ((int)(this["DoublesRangeFrom"]));
+            }
+            set {
+                this["DoublesRangeFrom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int DoublesRangeTo {
+            get {
+                return ((int)(this["DoublesRangeTo"]));
+            }
+            set {
+                this["DoublesRangeTo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Halves {
+            get {
+                return ((bool)(this["Halves"]));
+            }
+            set {
+                this["Halves"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int HalvesRangeFrom {
+            get {
+                return ((int)(this["HalvesRangeFrom"]));
+            }
+            set {
+                this["HalvesRangeFrom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int HalvesRangeTo {
+            get {
+                return ((int)(this["HalvesRangeTo"]));
+            }
+            set {
+                this["HalvesRangeTo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Mairangi Bay School")]
+        public string ChildsName {
+            get {
+                return ((string)(this["ChildsName"]));
+            }
+            set {
+                this["ChildsName"] = value;
+            }
+        }
     }
 }

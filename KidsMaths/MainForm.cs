@@ -5,6 +5,11 @@ using System.Windows.Forms;
 
 namespace KidsMaths
 {
+    public enum NumberToHide
+    {
+        Answer, First, Second
+    }
+
     public partial class MainForm : Form
     {
         Sums _sums;
@@ -29,6 +34,21 @@ namespace KidsMaths
                 _doubles = value;
             } }
 
+        public bool TimesTables { get; internal set; }
+        public int TimesTablesValue { get; internal set; }
+        public bool TimesTablesInOrder { get; internal set; }
+        public bool TimesTablesRandom { get; internal set; }
+        public bool AdditionAndSubtraction { get; internal set; }
+        public int DoublesRangeFrom { get; internal set; }
+        public int DoublesRangeTo { get; internal set; }
+        public bool Tens { get; internal set; }
+        public int TensValue { get; internal set; }
+        public bool Bonds { get; internal set; }
+        public int BondsValue { get; internal set; }
+        public int HalvesRangeFrom { get; internal set; }
+        public int HalvesRangeTo { get; internal set; }
+        public string ChildsName { get; internal set; }
+
         public MainForm()
         {
             InitializeComponent();
@@ -52,11 +72,40 @@ namespace KidsMaths
 
         private void PopulateControls()
         {
+            //Addition and Subtraction
+            AdditionAndSubtraction = Properties.Settings.Default.AdditionAndSubtraction;
             RangeFrom = Properties.Settings.Default.RangeFrom;
             RangeTo = Properties.Settings.Default.RangeTo;
             AddSubtrPattern = Properties.Settings.Default.AddSubtrPattern;
+
+            // Times Tables
+            TimesTables = Properties.Settings.Default.rdoTimesTables;
+            TimesTablesValue = Properties.Settings.Default.cboTimesTables;
+            TimesTablesInOrder = Properties.Settings.Default.TimesTableInOrder;
+            TimesTablesRandom = Properties.Settings.Default.TimesTableRandom;
+
+            // Tens
+            Tens = Properties.Settings.Default.Tens;
+            TensValue = Properties.Settings.Default.TensValue;
+
+            // Groups / Bonds
+            Bonds = Properties.Settings.Default.Bonds;
+            BondsValue = Properties.Settings.Default.BondsValue;
+
+            // Doubles
+            Doubles = Properties.Settings.Default.rdoDoubles;
+            DoublesRangeFrom = Properties.Settings.Default.DoublesRangeFrom;
+            DoublesRangeTo = Properties.Settings.Default.DoublesRangeTo;
+
+            // Halves
             Half = Properties.Settings.Default.rdoHalf;
-            Doubles = Properties.Settings.Default.rdoDoubles;            
+            HalvesRangeFrom = Properties.Settings.Default.HalvesRangeFrom;
+            HalvesRangeTo = Properties.Settings.Default.HalvesRangeTo;
+
+            // Childs Name
+            ChildsName = Properties.Settings.Default.ChildsName;
+
+            SetFormTitle();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -88,6 +137,33 @@ namespace KidsMaths
                 txtAnswer.Text = sumDisplay.Answer.ToString();
 
                 HideAnswer();
+            }
+            else if (TimesTables)
+            {
+                if (TimesTablesRandom)
+                {
+                    sumDisplay = _sums.GetTimesTables(TimesTablesValue);
+                }
+                else
+                {
+                    int lastNumber = 0;
+
+                    if (!string.IsNullOrWhiteSpace(txtFirstNumber.Text)) lastNumber = Convert.ToInt32(txtFirstNumber.Text);
+                    if (!string.IsNullOrWhiteSpace(txtFirstNumber.Text) && (Convert.ToInt32(txtSecondNumber.Text) != TimesTablesValue)) lastNumber = 0;
+
+                    if (lastNumber >= 12)
+                    {
+                        lastNumber = 1;
+                    }
+                    else
+                    {
+                        lastNumber++;
+                    }
+
+                    sumDisplay = new SumDisplay(lastNumber, TimesTablesValue, lastNumber * TimesTablesValue, Operator.Multiplication);
+                }
+
+                SetDisplay(sumDisplay, NumberToHide.Answer);
             }
             else
             {
@@ -135,6 +211,27 @@ namespace KidsMaths
             btnNext.Enabled = false;
             btnAnswer.Enabled = true;
             btnAnswer.Focus();
+        }
+
+        private void SetDisplay(SumDisplay sumDisplay, NumberToHide answer)
+        {
+            txtFirstNumber.Text = sumDisplay.FirstNumber.ToString();
+            txtSecondNumber.Text = sumDisplay.SecondNumber.ToString();
+            txtAnswer.Text = sumDisplay.Answer.ToString();
+            lblOperator.Text = sumDisplay.Operator;
+
+            switch (answer)
+            {
+                case NumberToHide.Answer:
+                    HideAnswer();
+                    break;
+                case NumberToHide.First:
+                    break;
+                case NumberToHide.Second:
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void HideHalfOfTextBox(bool hide)
@@ -192,7 +289,6 @@ namespace KidsMaths
             }
             
             txtAnswer.Visible = false;
-            //lblEquals.Visible = txtAnswer.Visible;
         }
 
         private void btnAnswer_Click(object sender, EventArgs e)
@@ -259,22 +355,66 @@ namespace KidsMaths
 
         private void SaveUserSettings()
         {
+            // Addition and Subtraction
+            Properties.Settings.Default.AdditionAndSubtraction = AdditionAndSubtraction;
             Properties.Settings.Default.RangeFrom = Convert.ToInt32(RangeFrom);
             Properties.Settings.Default.RangeTo = Convert.ToInt32(RangeTo);
 
             Properties.Settings.Default.AddSubtrPattern = AddSubtrPattern;
-            
-            Properties.Settings.Default.rdoDoubles = Doubles;
-            Properties.Settings.Default.rdoHalf = Half;
 
+            // Times Tables
+            Properties.Settings.Default.rdoTimesTables = TimesTables;
+            Properties.Settings.Default.cboTimesTables = Convert.ToInt32(TimesTablesValue);
+            Properties.Settings.Default.TimesTableInOrder = TimesTablesInOrder;
+            Properties.Settings.Default.TimesTableRandom = TimesTablesRandom;
+
+            // Tens
+            Properties.Settings.Default.Tens = Tens;
+            Properties.Settings.Default.TensValue = TensValue;
+
+            // Groups / Bonds
+            Properties.Settings.Default.Bonds = Bonds;
+            Properties.Settings.Default.BondsValue = BondsValue;
+
+            // Doubles
+            Properties.Settings.Default.rdoDoubles = Doubles;
+            Properties.Settings.Default.DoublesRangeFrom = DoublesRangeFrom;
+            Properties.Settings.Default.DoublesRangeTo = DoublesRangeTo;
+
+            // Halves
+            Properties.Settings.Default.rdoHalf = Half;
+            Properties.Settings.Default.HalvesRangeFrom = HalvesRangeFrom;
+            Properties.Settings.Default.HalvesRangeTo = HalvesRangeTo;
+
+            // Childs Name
+            Properties.Settings.Default.ChildsName = ChildsName;
 
             Properties.Settings.Default.Save();
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ShowOptionsForm();
+        }
+
+        private void ShowOptionsForm()
+        {
             OptionsForm optionsForm = new OptionsForm(this);
             optionsForm.ShowDialog();
+            SetFormTitle();
+            NextSum();
+        }
+
+        private void SetFormTitle()
+        {
+            string title = ChildsName + " Maths: ";
+
+            if (AdditionAndSubtraction) { Text = title + "Addition & Subtraction from " + RangeFrom + " to " + RangeTo; }
+            else if (TimesTables) { Text = title + "Times Tables of " + TimesTablesValue; }
+            else if (Tens) { Text = title + "Tens to " + TensValue; }
+            else if (Bonds) { Text = title + "Groups / Bonds of " + BondsValue; }
+            else if (Doubles) { Text = title + "Doubles from " + DoublesRangeFrom + " to " + DoublesRangeTo; }
+            else if (Half) { Text = title + "Halves from " + HalvesRangeFrom + " to " + HalvesRangeTo; }
         }
     }
 }

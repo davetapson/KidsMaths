@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.lblOperator = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnAnswer = new System.Windows.Forms.Button();
             this.txtFirstNumber = new System.Windows.Forms.TextBox();
@@ -49,20 +48,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblOperator = new System.Windows.Forms.Label();
             this.sstStatusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblOperator
-            // 
-            this.lblOperator.AutoSize = true;
-            this.lblOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 76F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOperator.Location = new System.Drawing.Point(217, 43);
-            this.lblOperator.Name = "lblOperator";
-            this.lblOperator.Size = new System.Drawing.Size(109, 115);
-            this.lblOperator.TabIndex = 1;
-            this.lblOperator.Text = "+";
-            this.lblOperator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnNext
             // 
@@ -248,6 +237,17 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
             // 
+            // lblOperator
+            // 
+            this.lblOperator.AutoSize = true;
+            this.lblOperator.Font = new System.Drawing.Font("Microsoft Sans Serif", 76F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOperator.Location = new System.Drawing.Point(217, 43);
+            this.lblOperator.Name = "lblOperator";
+            this.lblOperator.Size = new System.Drawing.Size(109, 115);
+            this.lblOperator.TabIndex = 1;
+            this.lblOperator.Text = "+";
+            this.lblOperator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,8 +264,8 @@
             this.Controls.Add(this.btnAnswer);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.txtAnswer);
-            this.Controls.Add(this.lblOperator);
             this.Controls.Add(this.lblEquals);
+            this.Controls.Add(this.lblOperator);
             this.Controls.Add(this.txtHalfOf);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -287,7 +287,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lblOperator;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnAnswer;
         private System.Windows.Forms.TextBox txtFirstNumber;
@@ -307,6 +306,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Label lblOperator;
     }
 }
 

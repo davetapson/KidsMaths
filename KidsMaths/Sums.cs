@@ -75,5 +75,15 @@ namespace KidsMaths
 
             return new SumDisplay(half, half, answer, Operator.Addition);
         }
+
+        internal SumDisplay GetTimesTables(int timesTablesValue)
+        {
+            _operator = Operator.Multiplication;
+            int firstNumber = rand.Next(1, 13);
+                       
+            int answer = firstNumber * timesTablesValue;
+
+            return new SumDisplay(firstNumber, timesTablesValue, answer, _operator);
+        }
     }
 }
