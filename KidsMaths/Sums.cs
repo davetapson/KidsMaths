@@ -119,7 +119,24 @@ namespace KidsMaths
 
         internal SumDisplay GetGroupings(int bondsValue)
         {
-            throw new NotImplementedException();
+            int firstNumber = 0;
+            int secondNumber = 0;
+            int answer = 0;
+
+            // get plus with patterns
+            // 10 + 6 = ?
+            // ?  + 10 = 14
+            // 10 + ? = 14
+            // 6  + ? = 10
+            // ?  + 6 = 10
+            // get minus with patterns
+            // 10 - 4 = ?
+            // ?  - 2 = 10
+            // 12 - ? = 10
+            // 10 - ? = 6
+            // ?  - 6 = 4
+
+            return new SumDisplay(firstNumber,secondNumber, answer, _operator);
         }
     }
 }
