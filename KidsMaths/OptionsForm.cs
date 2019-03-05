@@ -68,10 +68,46 @@ namespace KidsMaths
             // Tens
             rdoTens.Checked = _mainForm.Tens;
             cboTens.Text = _mainForm.TensValue.ToString();
+            switch(_mainForm.TensPattern)
+            {
+                case 1:
+                    rdoTensPattern1.Checked = true;
+                break;
+                case 2:
+                    rdoTensPattern2.Checked = true;
+                break;
+                case 3:
+                    rdoTensPattern3.Checked = true;
+                break;
+                case 4:
+                    rdoTensPattern4.Checked = true;
+                break;
+                default:
+                    rdoTensPattern1.Checked = true;
+                break;
+            }
 
             // Bonds
             rdoBonds.Checked = _mainForm.Bonds;
             cboBonds.Text = _mainForm.BondsValue.ToString();
+            switch (_mainForm.GroupingsPattern)
+            {
+                case 1:
+                    rdoGroupingPattern1.Checked = true;
+                    break;
+                case 2:
+                    rdoGroupingPattern2.Checked = true;
+                    break;
+                case 3:
+                    rdoGroupingPattern3.Checked = true;
+                    break;
+                case 4:
+                    rdoGroupingPattern4.Checked = true;
+                    break;
+                default:
+                    rdoGroupingPattern1.Checked = true;
+                    break;
+            }
 
             // Childs Name
             txtChildsName.Text = _mainForm.ChildsName;
