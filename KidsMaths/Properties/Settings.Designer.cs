@@ -274,5 +274,29 @@ namespace KidsMaths.Properties {
                 this["ChildsName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int TensPattern {
+            get {
+                return ((int)(this["TensPattern"]));
+            }
+            set {
+                this["TensPattern"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int GroupingsPattern {
+            get {
+                return ((int)(this["GroupingsPattern"]));
+            }
+            set {
+                this["GroupingsPattern"] = value;
+            }
+        }
     }
 }

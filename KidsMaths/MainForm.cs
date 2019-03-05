@@ -48,6 +48,8 @@ namespace KidsMaths
         public int HalvesRangeFrom { get; internal set; }
         public int HalvesRangeTo { get; internal set; }
         public string ChildsName { get; internal set; }
+        public int TensPattern { get; internal set; }
+        public int GroupingsPattern { get; internal set; }
 
         public MainForm()
         {
@@ -105,7 +107,7 @@ namespace KidsMaths
             // Childs Name
             ChildsName = Properties.Settings.Default.ChildsName;
 
-            SetFormTitle();
+            ReSetForm();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -115,106 +117,119 @@ namespace KidsMaths
 
         private void NextSum()
         {
-            _sums.RangeHigh = Convert.ToInt32(RangeTo);
-            _sums.RangeLow = Convert.ToInt32(RangeFrom);
-
-            if (Doubles)
+            try
             {
-                sumDisplay = _sums.GetDouble();
-
-                txtFirstNumber.Text = sumDisplay.FirstNumber.ToString();
-                txtSecondNumber.Text = sumDisplay.SecondNumber.ToString();
-                txtAnswer.Text = sumDisplay.Answer.ToString();
-                lblOperator.Text = sumDisplay.Operator;
-
-                HideAnswer();
-            }
-            else if (Half)
-            {
-                sumDisplay = _sums.GetHalf();
-
-                txtHalfOf.Text = "Half of " + sumDisplay.FirstNumber + " ";
-                txtAnswer.Text = sumDisplay.Answer.ToString();
-
-                HideAnswer();
-            }
-            else if (TimesTables)
-            {
-                if (TimesTablesRandom)
+                if (Doubles)
                 {
-                    sumDisplay = _sums.GetTimesTables(TimesTablesValue);
+                    sumDisplay = _sums.GetDouble();
+
+                    SetDisplay(sumDisplay, NumberToHide.Answer);
                 }
-                else
+                else if (Half)
                 {
-                    int lastNumber = 0;
+                    sumDisplay = _sums.GetHalf();
 
-                    if (!string.IsNullOrWhiteSpace(txtFirstNumber.Text)) lastNumber = Convert.ToInt32(txtFirstNumber.Text);
-                    if (!string.IsNullOrWhiteSpace(txtFirstNumber.Text) && (Convert.ToInt32(txtSecondNumber.Text) != TimesTablesValue)) lastNumber = 0;
+                    txtHalfOf.Text = "Half of " + sumDisplay.FirstNumber + " ";
+                    txtAnswer.Text = sumDisplay.Answer.ToString();
 
-                    if (lastNumber >= 12)
+                    HideAnswer();
+                }
+                else if (TimesTables)
+                {
+                    if (TimesTablesRandom)
                     {
-                        lastNumber = 1;
+                        sumDisplay = _sums.GetTimesTables(TimesTablesValue);
                     }
                     else
                     {
-                        lastNumber++;
+                        int lastNumber = 0;
+
+                        if (!string.IsNullOrWhiteSpace(txtFirstNumber.Text)) lastNumber = Convert.ToInt32(txtFirstNumber.Text);
+                        if (!string.IsNullOrWhiteSpace(txtFirstNumber.Text) && (Convert.ToInt32(txtSecondNumber.Text) != TimesTablesValue)) lastNumber = 0;
+
+                        if (lastNumber >= 12)
+                        {
+                            lastNumber = 1;
+                        }
+                        else
+                        {
+                            lastNumber++;
+                        }
+
+                        sumDisplay = new SumDisplay(lastNumber, TimesTablesValue, lastNumber * TimesTablesValue, Operator.Multiplication);
                     }
 
-                    sumDisplay = new SumDisplay(lastNumber, TimesTablesValue, lastNumber * TimesTablesValue, Operator.Multiplication);
+                    SetDisplay(sumDisplay, NumberToHide.Answer);
                 }
-
-                SetDisplay(sumDisplay, NumberToHide.Answer);
-            }
-            else
-            {
-                sumDisplay = _sums.Get();
-
-                txtFirstNumber.Text = sumDisplay.FirstNumber.ToString();
-                txtSecondNumber.Text = sumDisplay.SecondNumber.ToString();
-                txtAnswer.Text = sumDisplay.Answer.ToString();
-                lblOperator.Text = sumDisplay.Operator;
-
-                if (AddSubtrPattern == 1)
+                else if (Tens)
                 {
-                    HideAnswer();
+                    sumDisplay = _sums.GetTens(TensValue);
+                    SetDisplay(sumDisplay, _sums._operator == Operator.Addition ? NumberToHide.Second : NumberToHide.Answer);
                 }
-                else if (AddSubtrPattern == 2)
+                else if (Bonds)
                 {
-                    HideSecondNumber();
+                    sumDisplay = _sums.GetGroupings(BondsValue);
+                    SetDisplay(sumDisplay, _sums._operator == Operator.Addition ? NumberToHide.Second : NumberToHide.Answer);
                 }
-                else if (AddSubtrPattern == 3)
+                else if (AdditionAndSubtraction)
                 {
-                    HideFirstNumber();
-                }
-                else if (AddSubtrPattern == 4)
-                {
-                    int option = random.Next(0, 3);
+                    _sums.RangeHigh = Convert.ToInt32(RangeTo);
+                    _sums.RangeLow = Convert.ToInt32(RangeFrom);
 
-                    switch (option)
+                    sumDisplay = _sums.Get();
+
+                    txtFirstNumber.Text = sumDisplay.FirstNumber.ToString();
+                    txtSecondNumber.Text = sumDisplay.SecondNumber.ToString();
+                    txtAnswer.Text = sumDisplay.Answer.ToString();
+                    lblOperator.Text = sumDisplay.Operator;
+
+                    if (AddSubtrPattern == 1)
                     {
-                        case 0:
-                            HideFirstNumber();
-                            break;
-                        case 1:
-                            HideSecondNumber();
-                            break;
-                        case 2:
-                            HideAnswer();
-                            break;
-                        default:
-                            HideAnswer();
-                            break;
+                        HideAnswer();
                     }
-                } 
-            }
+                    else if (AddSubtrPattern == 2)
+                    {
+                        HideSecondNumber();
+                    }
+                    else if (AddSubtrPattern == 3)
+                    {
+                        HideFirstNumber();
+                    }
+                    else if (AddSubtrPattern == 4)
+                    {
+                        int option = random.Next(0, 3);
 
-            btnNext.Enabled = false;
-            btnAnswer.Enabled = true;
-            btnAnswer.Focus();
+                        switch (option)
+                        {
+                            case 0:
+                                HideFirstNumber();
+                                break;
+                            case 1:
+                                HideSecondNumber();
+                                break;
+                            case 2:
+                                HideAnswer();
+                                break;
+                            default:
+                                HideAnswer();
+                                break;
+                        }
+                    }
+                }
+
+                btnNext.Enabled = false;
+                btnAnswer.Enabled = true;
+                btnAnswer.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void SetDisplay(SumDisplay sumDisplay, NumberToHide answer)
         {
+            // todo - set + - icons accordign to option
             txtFirstNumber.Text = sumDisplay.FirstNumber.ToString();
             txtSecondNumber.Text = sumDisplay.SecondNumber.ToString();
             txtAnswer.Text = sumDisplay.Answer.ToString();
@@ -226,8 +241,10 @@ namespace KidsMaths
                     HideAnswer();
                     break;
                 case NumberToHide.First:
+                    HideFirstNumber();
                     break;
                 case NumberToHide.Second:
+                    HideSecondNumber();
                     break;
                 default:
                     break;
@@ -318,6 +335,11 @@ namespace KidsMaths
 
         private void txtPlus_Click(object sender, EventArgs e)
         {
+            SetPlusOptions();
+        }
+
+        private void SetPlusOptions()
+        {
             if (txtPlus.BackColor == Color.LightGreen) return;
 
             _sums._operator = Operator.Addition;
@@ -330,6 +352,11 @@ namespace KidsMaths
         }
 
         private void txtMinus_Click(object sender, EventArgs e)
+        {
+            SetMinusOptions();
+        }
+
+        private void SetMinusOptions()
         {
             if (txtMinus.BackColor == Color.LightGreen) return;
             _sums._operator = Operator.Subtraction;
@@ -371,10 +398,12 @@ namespace KidsMaths
             // Tens
             Properties.Settings.Default.Tens = Tens;
             Properties.Settings.Default.TensValue = TensValue;
+            Properties.Settings.Default.TensPattern = TensPattern;
 
             // Groups / Bonds
             Properties.Settings.Default.Bonds = Bonds;
             Properties.Settings.Default.BondsValue = BondsValue;
+            Properties.Settings.Default.GroupingsPattern = GroupingsPattern;
 
             // Doubles
             Properties.Settings.Default.rdoDoubles = Doubles;
@@ -401,20 +430,50 @@ namespace KidsMaths
         {
             OptionsForm optionsForm = new OptionsForm(this);
             optionsForm.ShowDialog();
-            SetFormTitle();
+            ReSetForm();
             NextSum();
         }
 
-        private void SetFormTitle()
+        private void ReSetForm()
         {
             string title = ChildsName + " Maths: ";
 
-            if (AdditionAndSubtraction) { Text = title + "Addition & Subtraction from " + RangeFrom + " to " + RangeTo; }
-            else if (TimesTables) { Text = title + "Times Tables of " + TimesTablesValue; }
-            else if (Tens) { Text = title + "Tens to " + TensValue; }
-            else if (Bonds) { Text = title + "Groups / Bonds of " + BondsValue; }
-            else if (Doubles) { Text = title + "Doubles from " + DoublesRangeFrom + " to " + DoublesRangeTo; }
-            else if (Half) { Text = title + "Halves from " + HalvesRangeFrom + " to " + HalvesRangeTo; }
+            if (AdditionAndSubtraction)
+            {
+                Text = title + "Addition & Subtraction from " + RangeFrom + " to " + RangeTo;
+                EnableOperators(true);
+            }
+            else if (TimesTables) {
+                Text = title + "Times Tables of " + TimesTablesValue;
+                EnableOperators(false);
+            }
+            else if (Tens) {
+                Text = title + "Tens to " + TensValue;
+                EnableOperators(true);
+            }
+            else if (Bonds) {
+                Text = title + "Groups / Bonds of " + BondsValue;
+                EnableOperators(true);
+            }
+            else if (Doubles) {
+                Text = title + "Doubles from " + DoublesRangeFrom + " to " + DoublesRangeTo;
+                EnableOperators(false);
+            }
+            else if (Half) {
+                Text = title + "Halves from " + HalvesRangeFrom + " to " + HalvesRangeTo;
+                EnableOperators(false);
+            }
+        }
+
+        private void EnableOperators(bool enable)
+        {
+            txtPlus.Enabled = enable;
+            txtMinus.Enabled = enable;
+        }
+
+        private void txtPlus_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

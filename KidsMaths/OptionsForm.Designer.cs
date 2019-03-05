@@ -78,6 +78,16 @@
             this.cboBonds = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtChildsName = new System.Windows.Forms.TextBox();
+            this.grpGroupingsOptions = new System.Windows.Forms.GroupBox();
+            this.rdoGroupingPattern3 = new System.Windows.Forms.RadioButton();
+            this.rdoGroupingPattern4 = new System.Windows.Forms.RadioButton();
+            this.rdoGroupingPattern2 = new System.Windows.Forms.RadioButton();
+            this.rdoGroupingPattern1 = new System.Windows.Forms.RadioButton();
+            this.grpTensOptions = new System.Windows.Forms.GroupBox();
+            this.rdoTensPattern3 = new System.Windows.Forms.RadioButton();
+            this.rdoTensPattern4 = new System.Windows.Forms.RadioButton();
+            this.rdoTensPattern2 = new System.Windows.Forms.RadioButton();
+            this.rdoTensPattern1 = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numToAdditionAndSubtraction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFromAdditionAndSubtraction)).BeginInit();
@@ -92,6 +102,8 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numToHalves)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFromHalves)).BeginInit();
+            this.grpGroupingsOptions.SuspendLayout();
+            this.grpTensOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -208,11 +220,15 @@
             // 
             // grpMain
             // 
+            this.grpMain.Controls.Add(this.grpTensOptions);
+            this.grpMain.Controls.Add(this.grpGroupingsOptions);
             this.grpMain.Controls.Add(this.txtChildsName);
             this.grpMain.Controls.Add(this.label1);
+            this.grpMain.Controls.Add(this.rdoDoubles);
+            this.grpMain.Controls.Add(this.rdoHalf);
             this.grpMain.Controls.Add(this.cboBonds);
-            this.grpMain.Controls.Add(this.rdoBonds);
             this.grpMain.Controls.Add(this.grpHalves);
+            this.grpMain.Controls.Add(this.rdoBonds);
             this.grpMain.Controls.Add(this.grpDoubles);
             this.grpMain.Controls.Add(this.cboTens);
             this.grpMain.Controls.Add(this.rdoTens);
@@ -221,18 +237,16 @@
             this.grpMain.Controls.Add(this.grpTimesTables);
             this.grpMain.Controls.Add(this.cboTimesTables);
             this.grpMain.Controls.Add(this.rdoTimesTables);
-            this.grpMain.Controls.Add(this.rdoHalf);
-            this.grpMain.Controls.Add(this.rdoDoubles);
             this.grpMain.Location = new System.Drawing.Point(12, 12);
             this.grpMain.Name = "grpMain";
-            this.grpMain.Size = new System.Drawing.Size(653, 328);
+            this.grpMain.Size = new System.Drawing.Size(886, 328);
             this.grpMain.TabIndex = 19;
             this.grpMain.TabStop = false;
             this.grpMain.Text = "Settings";
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(590, 346);
+            this.btnOK.Location = new System.Drawing.Point(823, 346);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 21;
@@ -243,7 +257,7 @@
             // rdoTimesTables
             // 
             this.rdoTimesTables.AutoSize = true;
-            this.rdoTimesTables.Location = new System.Drawing.Point(236, 22);
+            this.rdoTimesTables.Location = new System.Drawing.Point(466, 176);
             this.rdoTimesTables.Name = "rdoTimesTables";
             this.rdoTimesTables.Size = new System.Drawing.Size(88, 17);
             this.rdoTimesTables.TabIndex = 9;
@@ -268,7 +282,7 @@
             "3",
             "2",
             "1"});
-            this.cboTimesTables.Location = new System.Drawing.Point(331, 21);
+            this.cboTimesTables.Location = new System.Drawing.Point(561, 175);
             this.cboTimesTables.Name = "cboTimesTables";
             this.cboTimesTables.Size = new System.Drawing.Size(75, 21);
             this.cboTimesTables.TabIndex = 10;
@@ -278,7 +292,7 @@
             // 
             this.grpTimesTables.Controls.Add(this.rdoTimesTablesRandom);
             this.grpTimesTables.Controls.Add(this.rdoTimesTablesInOrder);
-            this.grpTimesTables.Location = new System.Drawing.Point(279, 45);
+            this.grpTimesTables.Location = new System.Drawing.Point(509, 199);
             this.grpTimesTables.Name = "grpTimesTables";
             this.grpTimesTables.Size = new System.Drawing.Size(127, 67);
             this.grpTimesTables.TabIndex = 11;
@@ -324,7 +338,7 @@
             // rdoDoubles
             // 
             this.rdoDoubles.AutoSize = true;
-            this.rdoDoubles.Location = new System.Drawing.Point(466, 22);
+            this.rdoDoubles.Location = new System.Drawing.Point(696, 25);
             this.rdoDoubles.Name = "rdoDoubles";
             this.rdoDoubles.Size = new System.Drawing.Size(64, 17);
             this.rdoDoubles.TabIndex = 7;
@@ -336,7 +350,7 @@
             // rdoHalf
             // 
             this.rdoHalf.AutoSize = true;
-            this.rdoHalf.Location = new System.Drawing.Point(466, 176);
+            this.rdoHalf.Location = new System.Drawing.Point(696, 176);
             this.rdoHalf.Name = "rdoHalf";
             this.rdoHalf.Size = new System.Drawing.Size(58, 17);
             this.rdoHalf.TabIndex = 8;
@@ -394,17 +408,17 @@
             this.rdoAdditionAndSubtraction.AutoSize = true;
             this.rdoAdditionAndSubtraction.Location = new System.Drawing.Point(6, 22);
             this.rdoAdditionAndSubtraction.Name = "rdoAdditionAndSubtraction";
-            this.rdoAdditionAndSubtraction.Size = new System.Drawing.Size(129, 17);
+            this.rdoAdditionAndSubtraction.Size = new System.Drawing.Size(158, 17);
             this.rdoAdditionAndSubtraction.TabIndex = 13;
             this.rdoAdditionAndSubtraction.TabStop = true;
-            this.rdoAdditionAndSubtraction.Text = "Addition && Subtraction";
+            this.rdoAdditionAndSubtraction.Text = "Addition && Subtraction Facts";
             this.rdoAdditionAndSubtraction.UseVisualStyleBackColor = true;
             this.rdoAdditionAndSubtraction.CheckedChanged += new System.EventHandler(this.rdoAdditionAndSubtraction_CheckedChanged);
             // 
             // rdoTens
             // 
             this.rdoTens.AutoSize = true;
-            this.rdoTens.Location = new System.Drawing.Point(236, 130);
+            this.rdoTens.Location = new System.Drawing.Point(266, 22);
             this.rdoTens.Name = "rdoTens";
             this.rdoTens.Size = new System.Drawing.Size(64, 17);
             this.rdoTens.TabIndex = 19;
@@ -427,7 +441,7 @@
             "80",
             "90",
             "100"});
-            this.cboTens.Location = new System.Drawing.Point(354, 129);
+            this.cboTens.Location = new System.Drawing.Point(336, 19);
             this.cboTens.Name = "cboTens";
             this.cboTens.Size = new System.Drawing.Size(52, 21);
             this.cboTens.TabIndex = 20;
@@ -436,7 +450,7 @@
             // grpDoubles
             // 
             this.grpDoubles.Controls.Add(this.groupBox4);
-            this.grpDoubles.Location = new System.Drawing.Point(483, 45);
+            this.grpDoubles.Location = new System.Drawing.Point(719, 52);
             this.grpDoubles.Name = "grpDoubles";
             this.grpDoubles.Size = new System.Drawing.Size(148, 102);
             this.grpDoubles.TabIndex = 22;
@@ -475,7 +489,7 @@
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.radioButton11);
             this.groupBox4.Controls.Add(this.radioButton12);
-            this.groupBox4.Location = new System.Drawing.Point(6, 16);
+            this.groupBox4.Location = new System.Drawing.Point(6, 18);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(125, 78);
             this.groupBox4.TabIndex = 22;
@@ -556,7 +570,7 @@
             // grpHalves
             // 
             this.grpHalves.Controls.Add(this.groupBox6);
-            this.grpHalves.Location = new System.Drawing.Point(483, 203);
+            this.grpHalves.Location = new System.Drawing.Point(713, 203);
             this.grpHalves.Name = "grpHalves";
             this.grpHalves.Size = new System.Drawing.Size(148, 102);
             this.grpHalves.TabIndex = 23;
@@ -676,12 +690,12 @@
             // rdoBonds
             // 
             this.rdoBonds.AutoSize = true;
-            this.rdoBonds.Location = new System.Drawing.Point(236, 176);
+            this.rdoBonds.Location = new System.Drawing.Point(466, 22);
             this.rdoBonds.Name = "rdoBonds";
-            this.rdoBonds.Size = new System.Drawing.Size(115, 17);
+            this.rdoBonds.Size = new System.Drawing.Size(98, 17);
             this.rdoBonds.TabIndex = 24;
             this.rdoBonds.TabStop = true;
-            this.rdoBonds.Text = "Groups / Bonds to:";
+            this.rdoBonds.Text = "Groupings with:";
             this.rdoBonds.UseVisualStyleBackColor = true;
             this.rdoBonds.CheckedChanged += new System.EventHandler(this.rdoBonds_CheckedChanged);
             // 
@@ -709,7 +723,7 @@
             "18",
             "19",
             "20"});
-            this.cboBonds.Location = new System.Drawing.Point(354, 175);
+            this.cboBonds.Location = new System.Drawing.Point(570, 21);
             this.cboBonds.Name = "cboBonds";
             this.cboBonds.Size = new System.Drawing.Size(52, 21);
             this.cboBonds.TabIndex = 25;
@@ -731,11 +745,125 @@
             this.txtChildsName.Size = new System.Drawing.Size(320, 20);
             this.txtChildsName.TabIndex = 27;
             // 
+            // grpGroupingsOptions
+            // 
+            this.grpGroupingsOptions.Controls.Add(this.rdoGroupingPattern3);
+            this.grpGroupingsOptions.Controls.Add(this.rdoGroupingPattern4);
+            this.grpGroupingsOptions.Controls.Add(this.rdoGroupingPattern2);
+            this.grpGroupingsOptions.Controls.Add(this.rdoGroupingPattern1);
+            this.grpGroupingsOptions.Location = new System.Drawing.Point(498, 45);
+            this.grpGroupingsOptions.Name = "grpGroupingsOptions";
+            this.grpGroupingsOptions.Size = new System.Drawing.Size(94, 109);
+            this.grpGroupingsOptions.TabIndex = 28;
+            this.grpGroupingsOptions.TabStop = false;
+            this.grpGroupingsOptions.Text = "Options";
+            // 
+            // rdoGroupingPattern3
+            // 
+            this.rdoGroupingPattern3.AutoSize = true;
+            this.rdoGroupingPattern3.Location = new System.Drawing.Point(6, 65);
+            this.rdoGroupingPattern3.Name = "rdoGroupingPattern3";
+            this.rdoGroupingPattern3.Size = new System.Drawing.Size(79, 17);
+            this.rdoGroupingPattern3.TabIndex = 7;
+            this.rdoGroupingPattern3.TabStop = true;
+            this.rdoGroupingPattern3.Text = "? + 10 = 15";
+            this.rdoGroupingPattern3.UseVisualStyleBackColor = true;
+            // 
+            // rdoGroupingPattern4
+            // 
+            this.rdoGroupingPattern4.AutoSize = true;
+            this.rdoGroupingPattern4.Location = new System.Drawing.Point(6, 85);
+            this.rdoGroupingPattern4.Name = "rdoGroupingPattern4";
+            this.rdoGroupingPattern4.Size = new System.Drawing.Size(65, 17);
+            this.rdoGroupingPattern4.TabIndex = 6;
+            this.rdoGroupingPattern4.TabStop = true;
+            this.rdoGroupingPattern4.Text = "Random";
+            this.rdoGroupingPattern4.UseVisualStyleBackColor = true;
+            // 
+            // rdoGroupingPattern2
+            // 
+            this.rdoGroupingPattern2.AutoSize = true;
+            this.rdoGroupingPattern2.Location = new System.Drawing.Point(6, 42);
+            this.rdoGroupingPattern2.Name = "rdoGroupingPattern2";
+            this.rdoGroupingPattern2.Size = new System.Drawing.Size(79, 17);
+            this.rdoGroupingPattern2.TabIndex = 5;
+            this.rdoGroupingPattern2.TabStop = true;
+            this.rdoGroupingPattern2.Text = "10 + ? = 15";
+            this.rdoGroupingPattern2.UseVisualStyleBackColor = true;
+            // 
+            // rdoGroupingPattern1
+            // 
+            this.rdoGroupingPattern1.AutoSize = true;
+            this.rdoGroupingPattern1.Location = new System.Drawing.Point(6, 19);
+            this.rdoGroupingPattern1.Name = "rdoGroupingPattern1";
+            this.rdoGroupingPattern1.Size = new System.Drawing.Size(73, 17);
+            this.rdoGroupingPattern1.TabIndex = 4;
+            this.rdoGroupingPattern1.TabStop = true;
+            this.rdoGroupingPattern1.Text = "10 + 5 = ?";
+            this.rdoGroupingPattern1.UseVisualStyleBackColor = true;
+            // 
+            // grpTensOptions
+            // 
+            this.grpTensOptions.Controls.Add(this.rdoTensPattern3);
+            this.grpTensOptions.Controls.Add(this.rdoTensPattern4);
+            this.grpTensOptions.Controls.Add(this.rdoTensPattern2);
+            this.grpTensOptions.Controls.Add(this.rdoTensPattern1);
+            this.grpTensOptions.Location = new System.Drawing.Point(302, 46);
+            this.grpTensOptions.Name = "grpTensOptions";
+            this.grpTensOptions.Size = new System.Drawing.Size(94, 109);
+            this.grpTensOptions.TabIndex = 29;
+            this.grpTensOptions.TabStop = false;
+            this.grpTensOptions.Text = "Options";
+            // 
+            // rdoTensPattern3
+            // 
+            this.rdoTensPattern3.AutoSize = true;
+            this.rdoTensPattern3.Location = new System.Drawing.Point(6, 65);
+            this.rdoTensPattern3.Name = "rdoTensPattern3";
+            this.rdoTensPattern3.Size = new System.Drawing.Size(79, 17);
+            this.rdoTensPattern3.TabIndex = 7;
+            this.rdoTensPattern3.TabStop = true;
+            this.rdoTensPattern3.Text = "? + 10 = 15";
+            this.rdoTensPattern3.UseVisualStyleBackColor = true;
+            // 
+            // rdoTensPattern4
+            // 
+            this.rdoTensPattern4.AutoSize = true;
+            this.rdoTensPattern4.Location = new System.Drawing.Point(6, 85);
+            this.rdoTensPattern4.Name = "rdoTensPattern4";
+            this.rdoTensPattern4.Size = new System.Drawing.Size(65, 17);
+            this.rdoTensPattern4.TabIndex = 6;
+            this.rdoTensPattern4.TabStop = true;
+            this.rdoTensPattern4.Text = "Random";
+            this.rdoTensPattern4.UseVisualStyleBackColor = true;
+            // 
+            // rdoTensPattern2
+            // 
+            this.rdoTensPattern2.AutoSize = true;
+            this.rdoTensPattern2.Location = new System.Drawing.Point(6, 42);
+            this.rdoTensPattern2.Name = "rdoTensPattern2";
+            this.rdoTensPattern2.Size = new System.Drawing.Size(79, 17);
+            this.rdoTensPattern2.TabIndex = 5;
+            this.rdoTensPattern2.TabStop = true;
+            this.rdoTensPattern2.Text = "10 + ? = 15";
+            this.rdoTensPattern2.UseVisualStyleBackColor = true;
+            // 
+            // rdoTensPattern1
+            // 
+            this.rdoTensPattern1.AutoSize = true;
+            this.rdoTensPattern1.Location = new System.Drawing.Point(6, 19);
+            this.rdoTensPattern1.Name = "rdoTensPattern1";
+            this.rdoTensPattern1.Size = new System.Drawing.Size(73, 17);
+            this.rdoTensPattern1.TabIndex = 4;
+            this.rdoTensPattern1.TabStop = true;
+            this.rdoTensPattern1.Text = "10 + 5 = ?";
+            this.rdoTensPattern1.UseVisualStyleBackColor = true;
+            // 
             // OptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(678, 375);
+            this.ClientSize = new System.Drawing.Size(914, 375);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.grpMain);
             this.Name = "OptionsForm";
@@ -762,6 +890,10 @@
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numToHalves)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFromHalves)).EndInit();
+            this.grpGroupingsOptions.ResumeLayout(false);
+            this.grpGroupingsOptions.PerformLayout();
+            this.grpTensOptions.ResumeLayout(false);
+            this.grpTensOptions.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -818,5 +950,15 @@
         private System.Windows.Forms.RadioButton radioButton12;
         private System.Windows.Forms.TextBox txtChildsName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox grpTensOptions;
+        private System.Windows.Forms.RadioButton rdoTensPattern3;
+        private System.Windows.Forms.RadioButton rdoTensPattern4;
+        private System.Windows.Forms.RadioButton rdoTensPattern2;
+        private System.Windows.Forms.RadioButton rdoTensPattern1;
+        private System.Windows.Forms.GroupBox grpGroupingsOptions;
+        private System.Windows.Forms.RadioButton rdoGroupingPattern3;
+        private System.Windows.Forms.RadioButton rdoGroupingPattern4;
+        private System.Windows.Forms.RadioButton rdoGroupingPattern2;
+        private System.Windows.Forms.RadioButton rdoGroupingPattern1;
     }
 }

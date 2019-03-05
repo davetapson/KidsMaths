@@ -118,6 +118,7 @@
             this.txtPlus.Text = "+";
             this.txtPlus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPlus.Click += new System.EventHandler(this.txtPlus_Click);
+            this.txtPlus.TextChanged += new System.EventHandler(this.txtPlus_TextChanged);
             // 
             // txtMinus
             // 

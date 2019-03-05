@@ -85,5 +85,41 @@ namespace KidsMaths
 
             return new SumDisplay(firstNumber, timesTablesValue, answer, _operator);
         }
+
+        internal SumDisplay GetTens(int tensValue)
+        {
+            int firstNumber = 0;
+            int secondNumber = 0;
+            int answer = 0;
+
+            switch (_operator)
+            {
+                // 30 + 70 = 100 (30 + ? = 100)
+                case Operator.Addition:
+                    firstNumber = (rand.Next(0, (tensValue / 10) + 1)) * 10;
+                    secondNumber = tensValue - firstNumber;
+                    answer = tensValue;
+                    break;
+                case Operator.Subtraction:
+                    // 100 - 70 = 30 (100 - 70 = ?)
+                    firstNumber = tensValue;
+                    secondNumber = (rand.Next(0, (tensValue / 10) + 1)) * 10;
+                    answer = firstNumber - secondNumber;
+                    break;
+                case Operator.Multiplication:
+                    break;
+                case Operator.Division:
+                    break;
+                default:
+                    break;
+            }
+
+            return new SumDisplay(firstNumber, secondNumber, answer, _operator);
+        }
+
+        internal SumDisplay GetGroupings(int bondsValue)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

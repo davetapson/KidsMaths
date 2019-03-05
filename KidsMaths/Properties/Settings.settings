@@ -65,5 +65,11 @@
     <Setting Name="ChildsName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Mairangi Bay School</Value>
     </Setting>
+    <Setting Name="TensPattern" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="GroupingsPattern" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

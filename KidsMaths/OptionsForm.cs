@@ -133,10 +133,42 @@ namespace KidsMaths
             // Tens
             _mainForm.Tens = rdoTens.Checked;
             _mainForm.TensValue = Convert.ToInt32(cboTens.Text);
+            if (rdoTensPattern1.Checked)
+            {
+                _mainForm.TensPattern = 1;
+            }
+            else if (rdoTensPattern2.Checked)
+            {
+                _mainForm.TensPattern = 2;
+            }
+            else if (rdoTensPattern3.Checked)
+            {
+                _mainForm.TensPattern = 3;
+            }
+            else if (rdoTensPattern4.Checked)
+            {
+                _mainForm.TensPattern = 4;
+            }
 
             // Bonds
             _mainForm.Bonds = rdoBonds.Checked;
             _mainForm.BondsValue = Convert.ToInt32(cboBonds.Text);
+            if (rdoGroupingPattern1.Checked)
+            {
+                _mainForm.GroupingsPattern = 1;
+            }
+            else if (rdoGroupingPattern2.Checked)
+            {
+                _mainForm.GroupingsPattern = 2;
+            }
+            else if (rdoGroupingPattern3.Checked)
+            {
+                _mainForm.GroupingsPattern = 3;
+            }
+            else if (rdoGroupingPattern4.Checked)
+            {
+                _mainForm.GroupingsPattern = 4;
+            }
 
             // Childs Name
             _mainForm.ChildsName = txtChildsName.Text;
@@ -188,6 +220,8 @@ namespace KidsMaths
                 cboTimesTables.Enabled = false;
                 cboTens.Enabled = false;
                 cboBonds.Enabled = false;
+                grpTensOptions.Enabled = false;
+                grpGroupingsOptions.Enabled = false;
             } else if (rdoDoubles.Checked)
             {
                 grpAdditionAndSubtraction.Enabled = false;
@@ -197,6 +231,8 @@ namespace KidsMaths
                 cboTimesTables.Enabled = false;
                 cboTens.Enabled = false;
                 cboBonds.Enabled = false;
+                grpTensOptions.Enabled = false;
+                grpGroupingsOptions.Enabled = false;
             }
             else if (rdoHalf.Checked)
             {
@@ -207,6 +243,8 @@ namespace KidsMaths
                 cboTens.Enabled = false;
                 cboTimesTables.Enabled = false;
                 cboBonds.Enabled = false;
+                grpTensOptions.Enabled = false;
+                grpGroupingsOptions.Enabled = false;
             }
             else if (rdoTimesTables.Checked)
             {
@@ -217,6 +255,8 @@ namespace KidsMaths
                 cboTimesTables.Enabled = true;
                 cboTens.Enabled = false;
                 cboBonds.Enabled = false;
+                grpTensOptions.Enabled = false;
+                grpGroupingsOptions.Enabled = false;
             } else if (rdoTens.Checked)
             {
                 grpAdditionAndSubtraction.Enabled = false;
@@ -226,6 +266,8 @@ namespace KidsMaths
                 cboTimesTables.Enabled = true;
                 cboTens.Enabled = true;
                 cboBonds.Enabled = false;
+                grpTensOptions.Enabled = true;
+                grpGroupingsOptions.Enabled = false;
             }
             else if (rdoBonds.Checked)
             {
@@ -236,6 +278,8 @@ namespace KidsMaths
                 cboTimesTables.Enabled = true;
                 cboTens.Enabled = false;
                 cboBonds.Enabled = true;
+                grpTensOptions.Enabled = false;
+                grpGroupingsOptions.Enabled = true;
             }
         }
 
