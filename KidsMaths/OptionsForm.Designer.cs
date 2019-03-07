@@ -88,6 +88,7 @@
             this.rdoTensPattern4 = new System.Windows.Forms.RadioButton();
             this.rdoTensPattern2 = new System.Windows.Forms.RadioButton();
             this.rdoTensPattern1 = new System.Windows.Forms.RadioButton();
+            this.chkVoiceOutput = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numToAdditionAndSubtraction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numFromAdditionAndSubtraction)).BeginInit();
@@ -149,7 +150,7 @@
             // 
             this.numToAdditionAndSubtraction.Location = new System.Drawing.Point(45, 45);
             this.numToAdditionAndSubtraction.Maximum = new decimal(new int[] {
-            1000,
+            999,
             0,
             0,
             0});
@@ -177,7 +178,7 @@
             // 
             this.numFromAdditionAndSubtraction.Location = new System.Drawing.Point(45, 19);
             this.numFromAdditionAndSubtraction.Maximum = new decimal(new int[] {
-            1000,
+            999,
             0,
             0,
             0});
@@ -220,6 +221,7 @@
             // 
             // grpMain
             // 
+            this.grpMain.Controls.Add(this.chkVoiceOutput);
             this.grpMain.Controls.Add(this.grpTensOptions);
             this.grpMain.Controls.Add(this.grpGroupingsOptions);
             this.grpMain.Controls.Add(this.txtChildsName);
@@ -470,7 +472,7 @@
             // 
             this.numFromDoubles.Location = new System.Drawing.Point(45, 19);
             this.numFromDoubles.Maximum = new decimal(new int[] {
-            1000,
+            999,
             0,
             0,
             0});
@@ -478,6 +480,7 @@
             this.numFromDoubles.Size = new System.Drawing.Size(66, 20);
             this.numFromDoubles.TabIndex = 4;
             this.numFromDoubles.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numFromDoubles.Leave += new System.EventHandler(this.numFromDoubles_Leave);
             // 
             // groupBox4
             // 
@@ -522,7 +525,7 @@
             // 
             this.numToDoubles.Location = new System.Drawing.Point(45, 45);
             this.numToDoubles.Maximum = new decimal(new int[] {
-            1000,
+            999,
             0,
             0,
             0});
@@ -535,6 +538,7 @@
             0,
             0,
             0});
+            this.numToDoubles.Leave += new System.EventHandler(this.numToDoubles_Leave);
             // 
             // label6
             // 
@@ -633,6 +637,7 @@
             0,
             0,
             0});
+            this.numToHalves.Leave += new System.EventHandler(this.numToHalves_Leave);
             // 
             // label7
             // 
@@ -647,7 +652,7 @@
             // 
             this.numFromHalves.Location = new System.Drawing.Point(45, 19);
             this.numFromHalves.Maximum = new decimal(new int[] {
-            1000,
+            999,
             0,
             0,
             0});
@@ -655,6 +660,7 @@
             this.numFromHalves.Size = new System.Drawing.Size(66, 20);
             this.numFromHalves.TabIndex = 4;
             this.numFromHalves.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numFromHalves.Leave += new System.EventHandler(this.numFromHalves_Leave);
             // 
             // label8
             // 
@@ -820,10 +826,10 @@
             this.rdoTensPattern3.AutoSize = true;
             this.rdoTensPattern3.Location = new System.Drawing.Point(6, 65);
             this.rdoTensPattern3.Name = "rdoTensPattern3";
-            this.rdoTensPattern3.Size = new System.Drawing.Size(79, 17);
+            this.rdoTensPattern3.Size = new System.Drawing.Size(85, 17);
             this.rdoTensPattern3.TabIndex = 7;
             this.rdoTensPattern3.TabStop = true;
-            this.rdoTensPattern3.Text = "? + 10 = 15";
+            this.rdoTensPattern3.Text = "? + 50 = 100";
             this.rdoTensPattern3.UseVisualStyleBackColor = true;
             // 
             // rdoTensPattern4
@@ -842,10 +848,10 @@
             this.rdoTensPattern2.AutoSize = true;
             this.rdoTensPattern2.Location = new System.Drawing.Point(6, 42);
             this.rdoTensPattern2.Name = "rdoTensPattern2";
-            this.rdoTensPattern2.Size = new System.Drawing.Size(79, 17);
+            this.rdoTensPattern2.Size = new System.Drawing.Size(85, 17);
             this.rdoTensPattern2.TabIndex = 5;
             this.rdoTensPattern2.TabStop = true;
-            this.rdoTensPattern2.Text = "10 + ? = 15";
+            this.rdoTensPattern2.Text = "50 + ? = 100";
             this.rdoTensPattern2.UseVisualStyleBackColor = true;
             // 
             // rdoTensPattern1
@@ -853,11 +859,22 @@
             this.rdoTensPattern1.AutoSize = true;
             this.rdoTensPattern1.Location = new System.Drawing.Point(6, 19);
             this.rdoTensPattern1.Name = "rdoTensPattern1";
-            this.rdoTensPattern1.Size = new System.Drawing.Size(73, 17);
+            this.rdoTensPattern1.Size = new System.Drawing.Size(79, 17);
             this.rdoTensPattern1.TabIndex = 4;
             this.rdoTensPattern1.TabStop = true;
-            this.rdoTensPattern1.Text = "10 + 5 = ?";
+            this.rdoTensPattern1.Text = "50 + 50 = ?";
             this.rdoTensPattern1.UseVisualStyleBackColor = true;
+            // 
+            // chkVoiceOutput
+            // 
+            this.chkVoiceOutput.AutoSize = true;
+            this.chkVoiceOutput.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkVoiceOutput.Location = new System.Drawing.Point(20, 295);
+            this.chkVoiceOutput.Name = "chkVoiceOutput";
+            this.chkVoiceOutput.Size = new System.Drawing.Size(91, 17);
+            this.chkVoiceOutput.TabIndex = 30;
+            this.chkVoiceOutput.Text = "Voice Output:";
+            this.chkVoiceOutput.UseVisualStyleBackColor = true;
             // 
             // OptionsForm
             // 
@@ -866,9 +883,13 @@
             this.ClientSize = new System.Drawing.Size(914, 375);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.grpMain);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "OptionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "OptionsForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OptionsForm_FormClosing);
             this.Load += new System.EventHandler(this.OptionsForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -960,5 +981,6 @@
         private System.Windows.Forms.RadioButton rdoGroupingPattern4;
         private System.Windows.Forms.RadioButton rdoGroupingPattern2;
         private System.Windows.Forms.RadioButton rdoGroupingPattern1;
+        private System.Windows.Forms.CheckBox chkVoiceOutput;
     }
 }

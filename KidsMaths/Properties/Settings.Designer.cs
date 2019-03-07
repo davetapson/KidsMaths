@@ -298,5 +298,17 @@ namespace KidsMaths.Properties {
                 this["GroupingsPattern"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseVoiceOutput {
+            get {
+                return ((bool)(this["UseVoiceOutput"]));
+            }
+            set {
+                this["UseVoiceOutput"] = value;
+            }
+        }
     }
 }

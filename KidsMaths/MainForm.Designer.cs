@@ -57,7 +57,7 @@
             // 
             this.btnNext.Enabled = false;
             this.btnNext.Font = new System.Drawing.Font("Comic Sans MS", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(183, 184);
+            this.btnNext.Location = new System.Drawing.Point(205, 184);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(186, 81);
             this.btnNext.TabIndex = 3;
@@ -68,7 +68,7 @@
             // btnAnswer
             // 
             this.btnAnswer.Font = new System.Drawing.Font("Comic Sans MS", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnswer.Location = new System.Drawing.Point(403, 184);
+            this.btnAnswer.Location = new System.Drawing.Point(430, 184);
             this.btnAnswer.Name = "btnAnswer";
             this.btnAnswer.Size = new System.Drawing.Size(186, 81);
             this.btnAnswer.TabIndex = 4;
@@ -139,9 +139,9 @@
             this.sslNumberOfQuestionsAnswered,
             this.toolStripStatusLabel2,
             this.sslNumWrongAnswers});
-            this.sstStatusStrip.Location = new System.Drawing.Point(0, 383);
+            this.sstStatusStrip.Location = new System.Drawing.Point(0, 393);
             this.sstStatusStrip.Name = "sstStatusStrip";
-            this.sstStatusStrip.Size = new System.Drawing.Size(797, 22);
+            this.sstStatusStrip.Size = new System.Drawing.Size(822, 22);
             this.sstStatusStrip.TabIndex = 11;
             this.sstStatusStrip.Text = "statusStrip1";
             // 
@@ -208,7 +208,7 @@
             this.txtHalfOf.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHalfOf.Location = new System.Drawing.Point(40, 55);
             this.txtHalfOf.Name = "txtHalfOf";
-            this.txtHalfOf.Size = new System.Drawing.Size(410, 98);
+            this.txtHalfOf.Size = new System.Drawing.Size(456, 98);
             this.txtHalfOf.TabIndex = 17;
             this.txtHalfOf.TabStop = false;
             this.txtHalfOf.Text = "Half of ";
@@ -221,7 +221,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(797, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(822, 24);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -253,7 +253,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 405);
+            this.ClientSize = new System.Drawing.Size(822, 415);
             this.Controls.Add(this.btnWrong);
             this.Controls.Add(this.btnRight);
             this.Controls.Add(this.sstStatusStrip);

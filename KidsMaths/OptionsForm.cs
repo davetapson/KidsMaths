@@ -111,6 +111,8 @@ namespace KidsMaths
 
             // Childs Name
             txtChildsName.Text = _mainForm.ChildsName;
+
+            chkVoiceOutput.Checked = _mainForm.UseSpeechOutput;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -121,9 +123,6 @@ namespace KidsMaths
         private void CloseMe()
         {
             SaveSettings();
-
-            Close();
-
         }
 
         private void SaveSettings()
@@ -208,11 +207,13 @@ namespace KidsMaths
 
             // Childs Name
             _mainForm.ChildsName = txtChildsName.Text;
+
+            _mainForm.UseSpeechOutput = chkVoiceOutput.Checked;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            CloseMe();
+            Close();
         }
 
         private void OptionsForm_Load(object sender, EventArgs e)
@@ -342,6 +343,51 @@ namespace KidsMaths
         private void rdoHalf_CheckedChanged(object sender, EventArgs e)
         {
             EnableDisableControls();
+        }
+
+        private void numFromHalves_Leave(object sender, EventArgs e)
+        {
+            if (numToHalves.Value < numFromHalves.Value)
+            {
+                MessageBox.Show("From cannot be less than To.", _mainForm.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                numFromHalves.Value = numToHalves.Value;
+                numFromHalves.Focus();
+            }
+        }
+
+        private void numToHalves_Leave(object sender, EventArgs e)
+        {
+            if (numToHalves.Value < numFromHalves.Value)
+            {
+                MessageBox.Show("From cannot be less than To.", _mainForm.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                numToHalves.Value = numFromHalves.Value;
+                numToHalves.Focus();
+            }
+        }
+
+        private void numFromDoubles_Leave(object sender, EventArgs e)
+        {
+            if (numToDoubles.Value < numFromDoubles.Value)
+            {
+                MessageBox.Show("From cannot be less than To.", _mainForm.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                numFromDoubles.Value = numToDoubles.Value;
+                numFromDoubles.Focus();
+            }
+        }
+
+        private void numToDoubles_Leave(object sender, EventArgs e)
+        {
+            if (numToDoubles.Value < numFromDoubles.Value)
+            {
+                MessageBox.Show("From cannot be less than To.", _mainForm.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                numToDoubles.Value = numFromDoubles.Value;
+                numToDoubles.Focus();
+            }
+        }
+
+        private void OptionsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseMe();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace KidsMaths
         {
         }
 
-        public SumDisplay Get()
+        public SumDisplay GetAdditionAndSubtraction()
         {
             int firstNumber = 0;
             int secondNumber = 0;
@@ -70,7 +70,7 @@ namespace KidsMaths
 
         internal SumDisplay GetHalf()
         {
-            int answer = rand.Next(RangeLow, RangeHigh/2 + 1);
+            int answer = rand.Next(RangeLow/2, RangeHigh/2 + 1);
             int half = answer * 2;
 
             return new SumDisplay(half, half, answer, Operator.Addition);
@@ -119,24 +119,76 @@ namespace KidsMaths
 
         internal SumDisplay GetGroupings(int bondsValue)
         {
+            // get random mix, weighted towards = 10
+            int random = rand.Next(0, 10);
+            if (random <= 6){
+                return EqualsBondsValueSum(bondsValue);
+            }
+            else
+            {
+                return BondsValuePlusSum(bondsValue);
+            }
+        }
+
+        private SumDisplay BondsValuePlusSum(int bondsValue)
+        {
             int firstNumber = 0;
             int secondNumber = 0;
-            int answer = 0;
+            int answer = 0;            
 
-            // get plus with patterns
-            // 10 + 6 = ?
-            // ?  + 10 = 14
-            // 10 + ? = 14
-            // 6  + ? = 10
-            // ?  + 6 = 10
-            // get minus with patterns
-            // 10 - 4 = ?
-            // ?  - 2 = 10
-            // 12 - ? = 10
-            // 10 - ? = 6
-            // ?  - 6 = 4
+            switch (_operator)
+            {
+                // 20 = 15 + 4
+                case Operator.Addition:
+                    answer = rand.Next(bondsValue, (bondsValue * 2) + 1);
+                    firstNumber = 10; // rand.Next(0, bondsValue + 1);
+                    secondNumber = answer - firstNumber;
+                    break;
+                case Operator.Subtraction:
+                    // 5 = 20 - 15
+                    //firstNumber = 10; // rand.Next(answer, bondsValue + 1);
+                    answer = rand.Next(0, bondsValue);
+                    secondNumber = 10; // firstNumber - answer;
+                    firstNumber = answer + secondNumber;
+                    break;
+                case Operator.Multiplication:
+                    break;
+                case Operator.Division:
+                    break;
+                default:
+                    break;
+            }
 
-            return new SumDisplay(firstNumber,secondNumber, answer, _operator);
+            return new SumDisplay(firstNumber, secondNumber, answer, _operator);
+        }
+
+        private SumDisplay EqualsBondsValueSum(int value)
+        {
+            int firstNumber = 0;
+            int secondNumber = 0;
+            int answer = value;
+
+            switch (_operator)
+            {
+                // 20 = 15 + 4
+                case Operator.Addition:
+                    firstNumber = rand.Next(0, answer + 1);
+                    secondNumber = answer - firstNumber;
+                    break;
+                case Operator.Subtraction:
+                    // 5 = 20 - 15
+                    firstNumber = rand.Next(answer, value + 10 + 1);
+                    secondNumber = firstNumber - answer;
+                    break;
+                case Operator.Multiplication:
+                    break;
+                case Operator.Division:
+                    break;
+                default:
+                    break;
+            }
+
+            return new SumDisplay(firstNumber, secondNumber, answer, _operator);
         }
     }
 }

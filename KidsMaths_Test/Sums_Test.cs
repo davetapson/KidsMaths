@@ -13,7 +13,7 @@ namespace KidsMaths_Test
             Sums sums = new Sums(0, 20, Operator.Addition);
 
             // Act
-            SumDisplay sumDisplay = sums.Get();
+            SumDisplay sumDisplay = sums.GetAdditionAndSubtraction();
 
             // Assert
             Assert.AreEqual("+", sumDisplay.Operator);
@@ -27,7 +27,7 @@ namespace KidsMaths_Test
             Sums sums = new Sums(0, 20, Operator.Subtraction);
 
             // Act
-            SumDisplay sumDisplay = sums.Get();
+            SumDisplay sumDisplay = sums.GetAdditionAndSubtraction();
 
             // Assert
             Assert.AreEqual("-", sumDisplay.Operator);

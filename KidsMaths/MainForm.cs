@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Speech.AudioFormat;
+using System.Speech.Recognition;
+using System.Speech.Synthesis;
+using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace KidsMaths
@@ -19,6 +25,8 @@ namespace KidsMaths
         SumDisplay sumDisplay;
         Random random = new Random();
         bool _doubles = false;
+
+        SpeechSynthesizer synth = new SpeechSynthesizer();
 
         public int RangeTo { get; internal set; }
         public int RangeFrom { get; internal set; }
@@ -50,6 +58,7 @@ namespace KidsMaths
         public string ChildsName { get; internal set; }
         public int TensPattern { get; internal set; }
         public int GroupingsPattern { get; internal set; }
+        public bool UseSpeechOutput { get; set; }
 
         public MainForm()
         {
@@ -58,6 +67,9 @@ namespace KidsMaths
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //GetVoices();
+            synth.SelectVoice("Microsoft Zira Desktop");
+
             _sums = new Sums();
             txtAnswer.Text = "";
             lblOperator.Text = "";
@@ -68,8 +80,46 @@ namespace KidsMaths
             _sums._operator = Operator.Addition;
             txtPlus.BackColor = Color.LightGreen;
 
-            
             formLoading = false;
+        }
+
+        private void GetVoices()
+        {
+            foreach (InstalledVoice voice in synth.GetInstalledVoices())
+            {
+                VoiceInfo info = voice.VoiceInfo;
+                string AudioFormats = "";
+                foreach (SpeechAudioFormatInfo fmt in info.SupportedAudioFormats)
+                {
+                    AudioFormats += String.Format("{0}\n",
+                    fmt.EncodingFormat.ToString());
+                }
+
+                Console.WriteLine(" Name:          " + info.Name);
+                Console.WriteLine(" Culture:       " + info.Culture);
+                Console.WriteLine(" Age:           " + info.Age);
+                Console.WriteLine(" Gender:        " + info.Gender);
+                Console.WriteLine(" Description:   " + info.Description);
+                Console.WriteLine(" ID:            " + info.Id);
+                Console.WriteLine(" Enabled:       " + voice.Enabled);
+                if (info.SupportedAudioFormats.Count != 0)
+                {
+                    Console.WriteLine(" Audio formats: " + AudioFormats);
+                }
+                else
+                {
+                    Console.WriteLine(" No supported audio formats found");
+                }
+
+                string AdditionalInfo = "";
+                foreach (string key in info.AdditionalInfo.Keys)
+                {
+                    AdditionalInfo += String.Format("  {0}: {1}\n", key, info.AdditionalInfo[key]);
+                }
+
+                Console.WriteLine(" Additional Info - " + AdditionalInfo);
+                Console.WriteLine();
+            }
         }
 
         private void PopulateControls()
@@ -107,6 +157,9 @@ namespace KidsMaths
             // Childs Name
             ChildsName = Properties.Settings.Default.ChildsName;
 
+            // Voice output
+            UseSpeechOutput = Properties.Settings.Default.UseVoiceOutput;
+
             ReSetForm();
         }
 
@@ -121,12 +174,18 @@ namespace KidsMaths
             {
                 if (Doubles)
                 {
+                    _sums.RangeLow = DoublesRangeFrom;
+                    _sums.RangeHigh = DoublesRangeTo;
+
                     sumDisplay = _sums.GetDouble();
 
                     SetDisplay(sumDisplay, NumberToHide.Answer);
                 }
                 else if (Half)
                 {
+                    _sums.RangeLow = HalvesRangeFrom;
+                    _sums.RangeHigh = HalvesRangeTo;
+
                     sumDisplay = _sums.GetHalf();
 
                     txtHalfOf.Text = "Half of " + sumDisplay.FirstNumber + " ";
@@ -164,57 +223,27 @@ namespace KidsMaths
                 else if (Tens)
                 {
                     sumDisplay = _sums.GetTens(TensValue);
-                    SetDisplay(sumDisplay, _sums._operator == Operator.Addition ? NumberToHide.Second : NumberToHide.Answer);
+                    SetDisplay(sumDisplay, TensPattern);
                 }
                 else if (Bonds)
                 {
                     sumDisplay = _sums.GetGroupings(BondsValue);
-                    SetDisplay(sumDisplay, _sums._operator == Operator.Addition ? NumberToHide.Second : NumberToHide.Answer);
+                    //SetDisplay(sumDisplay, _sums._operator == Operator.Addition ? NumberToHide.Second : NumberToHide.Answer);
+                    SetDisplay(sumDisplay, GroupingsPattern);
                 }
                 else if (AdditionAndSubtraction)
                 {
                     _sums.RangeHigh = Convert.ToInt32(RangeTo);
                     _sums.RangeLow = Convert.ToInt32(RangeFrom);
 
-                    sumDisplay = _sums.Get();
+                    sumDisplay = _sums.GetAdditionAndSubtraction();
 
-                    txtFirstNumber.Text = sumDisplay.FirstNumber.ToString();
-                    txtSecondNumber.Text = sumDisplay.SecondNumber.ToString();
-                    txtAnswer.Text = sumDisplay.Answer.ToString();
-                    lblOperator.Text = sumDisplay.Operator;
+                    SetDisplay(sumDisplay, AddSubtrPattern);
+                }                    
 
-                    if (AddSubtrPattern == 1)
-                    {
-                        HideAnswer();
-                    }
-                    else if (AddSubtrPattern == 2)
-                    {
-                        HideSecondNumber();
-                    }
-                    else if (AddSubtrPattern == 3)
-                    {
-                        HideFirstNumber();
-                    }
-                    else if (AddSubtrPattern == 4)
-                    {
-                        int option = random.Next(0, 3);
-
-                        switch (option)
-                        {
-                            case 0:
-                                HideFirstNumber();
-                                break;
-                            case 1:
-                                HideSecondNumber();
-                                break;
-                            case 2:
-                                HideAnswer();
-                                break;
-                            default:
-                                HideAnswer();
-                                break;
-                        }
-                    }
+                if (UseSpeechOutput)
+                {
+                    SayQuestion();
                 }
 
                 btnNext.Enabled = false;
@@ -227,13 +256,117 @@ namespace KidsMaths
             }
         }
 
+        private void ApplyPatternToDisplay(int pattern)
+        {
+            if (pattern == 1)
+            {
+                HideAnswer();
+            }
+            else if (pattern == 2)
+            {
+                HideSecondNumber();
+            }
+            else if (pattern == 3)
+            {
+                HideFirstNumber();
+            }
+            else if (pattern == 4)
+            {
+                int option = random.Next(0, 3);
+
+                switch (option)
+                {
+                    case 0:
+                        HideFirstNumber();
+                        break;
+                    case 1:
+                        HideSecondNumber();
+                        break;
+                    case 2:
+                        HideAnswer();
+                        break;
+                    default:
+                        HideAnswer();
+                        break;
+                }
+            }
+        }
+
+        private void SayQuestion()
+        {
+            string speech = GetSpeech();
+
+            ThreadPool.QueueUserWorkItem(delegate { synth.Speak(speech); }, null);            
+        }
+
+        private string GetSpeech()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            if (!Half)
+            {
+                if (txtFirstNumber.Visible)
+                {
+                    stringBuilder.Append(txtFirstNumber.Text);
+                }
+                else
+                {
+                    stringBuilder.Append("what ");
+                }
+
+                switch (lblOperator.Text)
+                {
+                    case "+":
+                        stringBuilder.Append(" plus ");
+                        break;
+                    case "-":
+                        stringBuilder.Append(" minus ");
+                        break;
+                    case "x":
+                        stringBuilder.Append(" times ");
+                        break;
+                    case "/":
+                        stringBuilder.Append(" divided by ");
+                        break;
+                    default:
+                        break;
+                }
+
+                if (txtSecondNumber.Visible)
+                {
+                    stringBuilder.Append(txtSecondNumber.Text);
+                }
+                else
+                {
+                    stringBuilder.Append(" what ");
+                }
+
+                stringBuilder.Append(" equals ");
+
+                if (txtAnswer.Visible)
+                {
+                    stringBuilder.Append(txtAnswer.Text);
+                }
+                else
+                {
+                    stringBuilder.Append(" what ");
+                } 
+            }
+            else
+            {
+                stringBuilder.Append(txtHalfOf.Text);
+            }
+
+            return stringBuilder.ToString();
+        }
+
         private void SetDisplay(SumDisplay sumDisplay, NumberToHide answer)
         {
             // todo - set + - icons accordign to option
             txtFirstNumber.Text = sumDisplay.FirstNumber.ToString();
             txtSecondNumber.Text = sumDisplay.SecondNumber.ToString();
             txtAnswer.Text = sumDisplay.Answer.ToString();
-            lblOperator.Text = sumDisplay.Operator;
+            lblOperator.Text = sumDisplay.Operator;            
 
             switch (answer)
             {
@@ -250,6 +383,18 @@ namespace KidsMaths
                     break;
             }
         }
+
+        private void SetDisplay(SumDisplay sumDisplay, int displayPattern)
+        {
+            // todo - set + - icons accordign to option
+            txtFirstNumber.Text = sumDisplay.FirstNumber.ToString();
+            txtSecondNumber.Text = sumDisplay.SecondNumber.ToString();
+            txtAnswer.Text = sumDisplay.Answer.ToString();
+            lblOperator.Text = sumDisplay.Operator;
+
+            ApplyPatternToDisplay(displayPattern);
+        }
+
 
         private void HideHalfOfTextBox(bool hide)
         {
@@ -315,6 +460,32 @@ namespace KidsMaths
 
         private void AnswerPressed()
         {
+            string speech = "";
+
+            // speech
+            if (UseSpeechOutput)
+            {
+                if (!Half)
+                {
+
+                    if (!txtFirstNumber.Visible)
+                    {
+                        speech = txtFirstNumber.Text;
+                    }
+                    else if (!txtSecondNumber.Visible)
+                    {
+                        speech = txtSecondNumber.Text;
+                    }
+                    else
+                    {
+                        speech = txtAnswer.Text;
+                    }
+                }
+                else
+                {
+                    speech = txtAnswer.Text;
+                }
+            }
             txtAnswer.Visible = true;
             //lblEquals.Visible = txtAnswer.Visible;
             if (!Half)
@@ -331,6 +502,9 @@ namespace KidsMaths
             btnNext.Focus();
             numberOfQuestionsAnswered++;
             sslNumberOfQuestionsAnswered.Text = numberOfQuestionsAnswered.ToString();
+
+            if(speech != "") synth.Speak(speech);
+
         }
 
         private void txtPlus_Click(object sender, EventArgs e)
@@ -418,6 +592,9 @@ namespace KidsMaths
             // Childs Name
             Properties.Settings.Default.ChildsName = ChildsName;
 
+            // Voice Output
+            Properties.Settings.Default.UseVoiceOutput = UseSpeechOutput;
+
             Properties.Settings.Default.Save();
         }
 
@@ -463,6 +640,8 @@ namespace KidsMaths
                 Text = title + "Halves from " + HalvesRangeFrom + " to " + HalvesRangeTo;
                 EnableOperators(false);
             }
+
+            if (!Half) lblOperator.Visible = true;
         }
 
         private void EnableOperators(bool enable)
